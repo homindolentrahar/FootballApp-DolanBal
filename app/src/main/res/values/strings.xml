@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">Dolan Bal</string>
+
+    <string-array name="league_id">
+        <item>4328</item>
+        <item>4334</item>
+        <item>4331</item>
+        <item>4332</item>
+        <item>4335</item>
+        <item>4346</item>
+        <item>4344</item>
+        <item>4356</item>
+        <item>4330</item>
+        <item>4396</item>
+    </string-array>
+
+    <string-array name="league_name">
+        <item>English Premier League</item>
+        <item>French Ligue 1</item>
+        <item>German Bundesliga</item>
+        <item>Italian Serie A</item>
+        <item>Spanish La Liga</item>
+        <item>American Mayor League</item>
+        <item>Protugeuese Premiera Liga</item>
+        <item>Australian A League</item>
+        <item>Scotish Premier League</item>
+        <item>English League 1</item>
+    </string-array>
+
+    <string-array name="league_country">
+        <item>England</item>
+        <item>France</item>
+        <item>Germany</item>
+        <item>Italy</item>
+        <item>Spain</item>
+        <item>USA</item>
+        <item>Portugal</item>
+        <item>Australia</item>
+        <item>Scotland</item>
+        <item>England</item>
+    </string-array>
+
+    <array name="league_badge">
+        <item>@drawable/english_premier_league</item>
+        <item>@drawable/french_ligue_1</item>
+        <item>@drawable/german_bundesliga</item>
+        <item>@drawable/italian_serie_a</item>
+        <item>@drawable/spanish_la_liga</item>
+        <item>@drawable/american_mayor_league</item>
+        <item>@drawable/portugeuese_premiera_liga</item>
+        <item>@drawable/australian_a_league</item>
+        <item>@drawable/scotish_premier_league</item>
+        <item>@drawable/english_league_1</item>
+    </array>
+
+    <string name="leagues">Leagues</string>
+    <string name="favorites">Favorites</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="search">Search</string>
+    <string name="last_match">Last Match</string>
+    <string name="next_match">Next Match</string>
+    <string name="separator">:</string>
+    <string name="template_date_time">%1$s  %2$s</string>
+    <string name="template_stadium_capacity">%s seats</string>
+    <string name="overview">Overview</string>
+    <string name="teams">Teams</string>
+    <string name="info">Info</string>
+    <string name="text_league_name">League Name :</string>
+    <string name="text_league_country">Country :</string>
+    <string name="text_league_formed">Formed Year :</string>
+    <string name="text_league_first_event">First Event :</string>
+    <string name="description">Description</string>
+    <string name="contacts">Contacts</string>
+    <string name="classement">Classement</string>
+    <string name="text_classement_match">M</string>
+    <string name="text_classement_win">W</string>
+    <string name="text_classement_draw">D</string>
+    <string name="text_classement_loss">L</string>
+    <string name="text_classement_goals_for">GF</string>
+    <string name="text_classement_goals_against">GA</string>
+    <string name="text_classement_total">T</string>
+    <string name="text_error_result_not_found">Result Not Found !</string>
+    <string name="search_match">Search Match</string>
+    <string name="search_team">Search Team</string>
+    <string name="home">Home</string>
+    <string name="away">Away</string>
+    <string name="goals_detail">Goals Detail</string>
+    <string name="red_cards">Red Cards</string>
+    <string name="yellow_cards">Yellow Cards</string>
+    <string name="substitutes">Substitutes</string>
+    <string name="favorite">Favorite</string>
+    <string name="stadium">Stadium</string>
+    <string name="text_player_team">Team :</string>
+    <string name="text_date_born">Date Born :</string>
+    <string name="text_player_number">Number :</string>
+    <string name="text_date_sign">Date Sign :</string>
+    <string name="text_player_wage">Wage :</string>
+    <string name="text_birth_location">Birth Location :</string>
+
+</resources>

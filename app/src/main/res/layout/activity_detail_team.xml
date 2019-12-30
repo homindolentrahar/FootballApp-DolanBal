@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dumb.projects.kadefinalsubmission.viewmodel.DetailTeamViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:id="@+id/detail_team_activity"
+        android:layout_height="match_parent"
+        tools:context=".DetailTeamActivity">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/all_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/detail_toolbar" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/img_team_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    app:detailBanner="@{viewModel.team.teamFanart}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius_bottom_left="@dimen/corner_radius"
+                    app:riv_corner_radius_bottom_right="@dimen/corner_radius"
+                    tools:src="@color/colorPrimary" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_team_badge"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="@dimen/half_margin"
+                    app:layout_constraintBottom_toBottomOf="@id/img_team_banner"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_toolbar"
+                    app:teamBadge="@{viewModel.team.teamBadge}"
+                    tools:src="@color/dark" />
+
+                <TextView
+                    android:id="@+id/tv_team_name"
+                    style="@style/DetailTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/half_margin"
+                    android:layout_marginEnd="@dimen/half_margin"
+                    android:maxLines="2"
+                    android:text="@{viewModel.team.teamName}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/img_team_badge"
+                    app:layout_constraintTop_toTopOf="@id/img_team_badge"
+                    tools:text="Arsenal" />
+
+                <TextView
+                    android:id="@+id/tv_team_stadium"
+                    style="@style/DetailSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.team.teamStadium}"
+                    app:layout_constraintStart_toStartOf="@id/tv_team_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_team_name"
+                    tools:text="Gunford Stadium" />
+
+                <TextView
+                    android:id="@+id/tv_team_location"
+                    style="@style/DetailThirdSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/half_margin"
+                    android:text="@{viewModel.team.stadiumLocation}"
+                    app:layout_constraintStart_toStartOf="@id/tv_team_stadium"
+                    app:layout_constraintTop_toBottomOf="@id/tv_team_stadium"
+                    tools:text="London" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    style="@style/CustomTabLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/half_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_team_banner" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="0dp"
+                    android:layout_height="500dp"
+                    android:layout_marginTop="@dimen/half_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/progress_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.status}"
+                    app:indicatorColor="@color/orange"
+                    app:indicatorName="BallPulseIndicator"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

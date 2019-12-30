@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dumb.projects.kadefinalsubmission.viewmodel.DetailLeagueViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/detail_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".DetailLeagueActivity">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/all_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <include layout="@layout/detail_toolbar" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/img_league_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="256dp"
+                    android:scaleType="centerCrop"
+                    app:detailBanner="@{viewModel.league.fanart}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius_bottom_left="@dimen/corner_radius"
+                    app:riv_corner_radius_bottom_right="@dimen/corner_radius"
+                    tools:src="@color/orange" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/img_league_badge"
+                    android:layout_width="108dp"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="@dimen/half_margin"
+                    android:scaleType="centerCrop"
+                    app:detailLeagueBadge="@{viewModel.league.badge}"
+                    app:layout_constraintBottom_toBottomOf="@id/img_league_banner"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_toolbar"
+                    app:riv_corner_radius="@dimen/corner_radius"
+                    tools:src="@color/dark" />
+
+                <TextView
+                    android:id="@+id/tv_league_name"
+                    style="@style/DetailTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/half_margin"
+                    android:layout_marginEnd="@dimen/half_margin"
+                    android:maxLines="2"
+                    android:text="@{viewModel.league.leagueName}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/img_league_badge"
+                    app:layout_constraintTop_toTopOf="@id/img_league_badge"
+                    tools:text="English Premier League" />
+
+                <TextView
+                    android:id="@+id/tv_league_country"
+                    style="@style/DetailSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/half_margin"
+                    android:text="@{viewModel.league.country}"
+                    app:layout_constraintStart_toStartOf="@id/tv_league_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_league_name"
+                    tools:text="England" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    style="@style/CustomTabLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/double_margin"
+                    android:layout_marginTop="@dimen/half_margin"
+                    android:layout_marginEnd="@dimen/double_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_league_banner" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="0dp"
+                    android:layout_height="500dp"
+                    android:layout_marginTop="@dimen/half_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/progress_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.status}"
+                    app:indicatorColor="@color/orange"
+                    app:indicatorName="BallPulseIndicator"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

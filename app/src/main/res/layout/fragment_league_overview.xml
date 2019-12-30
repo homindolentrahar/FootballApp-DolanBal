@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dumb.projects.kadefinalsubmission.viewmodel.LeagueOverviewViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/all_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/half_margin"
+            tools:context=".fragment.LeagueOverviewFragment">
+
+            <TextView
+                android:id="@+id/text_league_info"
+                style="@style/AppTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/half_margin"
+                android:text="@string/info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/wrap_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginEnd="@dimen/half_margin"
+                android:background="@drawable/bottom_container_background"
+                android:paddingBottom="@dimen/half_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/text_league_info"
+                app:layout_constraintTop_toBottomOf="@id/text_league_info">
+
+                <TextView
+                    android:id="@+id/text_league_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_league_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_league_name"
+                    style="@style/DetailInfoText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/half_margin"
+                    android:maxLines="1"
+                    android:text="@{viewModel.league.leagueName}"
+                    app:layout_constraintStart_toEndOf="@id/text_league_name"
+                    app:layout_constraintTop_toTopOf="@id/text_league_name"
+                    tools:text="English Premiere League" />
+
+                <TextView
+                    android:id="@+id/text_league_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_league_country"
+                    app:layout_constraintStart_toStartOf="@id/text_league_name"
+                    app:layout_constraintTop_toBottomOf="@id/text_league_name" />
+
+                <TextView
+                    android:id="@+id/tv_league_country"
+                    style="@style/DetailInfoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{viewModel.league.country}"
+                    app:layout_constraintStart_toStartOf="@id/tv_league_name"
+                    app:layout_constraintTop_toTopOf="@id/text_league_country"
+                    tools:text="England" />
+
+                <TextView
+                    android:id="@+id/text_league_formed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_league_formed"
+                    app:layout_constraintStart_toStartOf="@id/text_league_country"
+                    app:layout_constraintTop_toBottomOf="@id/text_league_country" />
+
+                <TextView
+                    android:id="@+id/tv_league_formed"
+                    style="@style/DetailInfoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{viewModel.league.leagueFormed}"
+                    app:layout_constraintStart_toStartOf="@id/tv_league_country"
+                    app:layout_constraintTop_toTopOf="@id/text_league_formed"
+                    tools:text="1242" />
+
+                <TextView
+                    android:id="@+id/text_league_first_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_league_first_event"
+                    app:layout_constraintStart_toStartOf="@id/text_league_formed"
+                    app:layout_constraintTop_toBottomOf="@id/text_league_formed" />
+
+                <TextView
+                    android:id="@+id/tv_league_first_event"
+                    style="@style/DetailInfoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{viewModel.league.leagueFirstEvent}"
+                    app:layout_constraintStart_toStartOf="@id/tv_league_formed"
+                    app:layout_constraintTop_toTopOf="@id/text_league_first_event"
+                    tools:text="18-10-2000" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/text_league_description"
+                style="@style/AppTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
+                android:text="@string/description"
+                app:layout_constraintStart_toStartOf="@id/text_league_info"
+                app:layout_constraintTop_toBottomOf="@id/wrap_info" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/wrap_description"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="@dimen/half_margin"
+                android:background="@drawable/bottom_container_background"
+                android:paddingBottom="@dimen/half_padding"
+                app:layout_constraintEnd_toEndOf="@id/wrap_info"
+                app:layout_constraintStart_toStartOf="@id/wrap_info"
+                app:layout_constraintTop_toBottomOf="@id/text_league_description">
+
+                <TextView
+                    android:id="@+id/tv_league_description"
+                    style="@style/DetailInfoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.league.description}"
+                    tools:text="Lorem Ipsum Dolor Sit Amet" />
+
+            </androidx.core.widget.NestedScrollView>
+
+            <TextView
+                android:id="@+id/text_league_contact"
+                style="@style/AppTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
+                android:text="@string/contacts"
+                app:layout_constraintStart_toStartOf="@id/text_league_description"
+                app:layout_constraintTop_toBottomOf="@id/wrap_description" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/wrap_contact"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
+                android:background="@drawable/bottom_container_background"
+                android:paddingBottom="@dimen/half_padding"
+                app:layout_constraintEnd_toEndOf="@id/wrap_description"
+                app:layout_constraintStart_toStartOf="@id/wrap_description"
+                app:layout_constraintTop_toBottomOf="@id/text_league_contact">
+
+                <ImageView
+                    android:id="@+id/img_web"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_web"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_league_web"
+                    style="@style/DetailInfoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/half_margin"
+                    android:ellipsize="end"
+                    android:text="@{viewModel.league.website}"
+                    android:textColor="@color/colorAccent"
+                    app:layout_constraintBottom_toBottomOf="@id/img_web"
+                    app:layout_constraintStart_toEndOf="@id/img_web"
+                    app:layout_constraintTop_toTopOf="@id/img_web"
+                    tools:text="www.premiereleague.com" />
+
+                <ImageView
+                    android:id="@+id/img_twitter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_twitter"
+                    app:layout_constraintStart_toStartOf="@id/img_web"
+                    app:layout_constraintTop_toBottomOf="@id/img_web" />
+
+                <TextView
+                    android:id="@+id/tv_league_twitter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.league.twitter}"
+                    android:textColor="@color/twitter_color"
+                    app:layout_constraintBottom_toBottomOf="@id/img_twitter"
+                    app:layout_constraintStart_toStartOf="@id/tv_league_web"
+                    app:layout_constraintTop_toTopOf="@id/img_twitter"
+                    tools:text="twitter/premiereLeague.com" />
+
+                <ImageView
+                    android:id="@+id/img_youtube"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_youtube"
+                    app:layout_constraintStart_toStartOf="@id/img_twitter"
+                    app:layout_constraintTop_toBottomOf="@id/img_twitter" />
+
+                <TextView
+                    android:id="@+id/tv_league_youtube"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.league.youtube}"
+                    android:textColor="@color/colorPrimaryDark"
+                    app:layout_constraintBottom_toBottomOf="@id/img_youtube"
+                    app:layout_constraintStart_toStartOf="@id/tv_league_twitter"
+                    app:layout_constraintTop_toTopOf="@id/img_youtube"
+                    tools:text="youtube/premiereLeague.com" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

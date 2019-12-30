@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.dumb.projects.kadefinalsubmission.model.Classement" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/half_padding"
+        android:paddingBottom="@dimen/half_padding">
+
+        <TextView
+            android:id="@+id/tv_team_rank"
+            style="@style/DetailInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(item.rank)}"
+            app:layout_constraintBottom_toBottomOf="@id/img_team_badge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_team_badge"
+            tools:text="1" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_team_badge"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/quarter_margin"
+            app:layout_constraintStart_toEndOf="@id/tv_team_rank"
+            app:layout_constraintTop_toTopOf="parent"
+            app:teamBadge="@{item.teamBadge}"
+            tools:src="@color/dark" />
+
+        <TextView
+            android:id="@+id/tv_team_name"
+            style="@style/DetailInfoText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/quarter_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{item.teamName}"
+            app:layout_constraintBottom_toBottomOf="@id/img_team_badge"
+            app:layout_constraintEnd_toStartOf="@id/guideline_separator"
+            app:layout_constraintStart_toEndOf="@id/img_team_badge"
+            app:layout_constraintTop_toTopOf="@id/img_team_badge"
+            tools:text="Liverpool" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_separator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="192dp" />
+
+        <TextView
+            android:id="@+id/tv_team_match"
+            style="@style/DetailInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(item.played)}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_team_name"
+            app:layout_constraintEnd_toStartOf="@id/tv_team_win"
+            app:layout_constraintStart_toEndOf="@id/guideline_separator"
+            app:layout_constraintTop_toTopOf="@id/tv_team_name"
+            tools:text="30" />
+
+        <TextView
+            android:id="@+id/tv_team_win"
+            style="@style/DetailInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(item.win)}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_team_match"
+            app:layout_constraintEnd_toStartOf="@id/tv_team_draw"
+            app:layout_constraintStart_toEndOf="@id/tv_team_match"
+            app:layout_constraintTop_toTopOf="@id/tv_team_match"
+            tools:text="3" />
+
+        <TextView
+            android:id="@+id/tv_team_draw"
+            style="@style/DetailInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(item.draw)}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_team_win"
+            app:layout_constraintEnd_toStartOf="@id/tv_team_loss"
+            app:layout_constraintStart_toEndOf="@id/tv_team_win"
+            app:layout_constraintTop_toTopOf="@id/tv_team_win"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/tv_team_loss"
+            style="@style/DetailInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(item.loss)}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_team_draw"
+            app:layout_constraintEnd_toStartOf="@id/tv_team_goals_for"
+            app:layout_constraintStart_toEndOf="@id/tv_team_draw"
+            app:layout_constraintTop_toTopOf="@id/tv_team_draw"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/tv_team_goals_for"
+            style="@style/DetailInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(item.goalsFor)}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_team_loss"
+            app:layout_constraintEnd_toStartOf="@id/tv_team_goals_against"
+            app:layout_constraintStart_toEndOf="@id/tv_team_loss"
+            app:layout_constraintTop_toTopOf="@id/tv_team_loss"
+            tools:text="13" />
+
+        <TextView
+            android:id="@+id/tv_team_goals_against"
+            style="@style/DetailInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(item.goalsAgainst)}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_team_goals_for"
+            app:layout_constraintEnd_toStartOf="@id/tv_team_total"
+            app:layout_constraintStart_toEndOf="@id/tv_team_goals_for"
+            app:layout_constraintTop_toTopOf="@id/tv_team_goals_for"
+            tools:text="6" />
+
+        <TextView
+            android:id="@+id/tv_team_total"
+            style="@style/DetailInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(item.total)}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_team_goals_against"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_team_goals_against"
+            app:layout_constraintTop_toTopOf="@id/tv_team_goals_against"
+            tools:text="96" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

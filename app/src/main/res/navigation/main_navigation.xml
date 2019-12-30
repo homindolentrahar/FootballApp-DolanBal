@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/leagues">
+
+    <fragment
+        android:id="@+id/leagues"
+        android:name="com.dumb.projects.kadefinalsubmission.fragment.LeagueFragment"
+        android:label="fragment_league"
+        tools:layout="@layout/fragment_league">
+        <action
+            android:id="@+id/action_leagues_to_classementFragment"
+            app:destination="@id/classement" />
+    </fragment>
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.dumb.projects.kadefinalsubmission.fragment.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/classement"
+        android:name="com.dumb.projects.kadefinalsubmission.fragment.ClassementFragment"
+        android:label="fragment_classement"
+        tools:layout="@layout/fragment_classement" >
+        <action
+            android:id="@+id/action_classementFragment_to_favorites"
+            app:destination="@id/favorites" />
+    </fragment>
+</navigation>

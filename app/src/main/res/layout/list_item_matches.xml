@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.dumb.projects.kadefinalsubmission.model.Match" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/corner_radius"
+        app:cardElevation="@dimen/cardview_default_elevation"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/all_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/quarter_padding">
+
+            <TextView
+                android:id="@+id/tv_match_name"
+                style="@style/ListItemTitleMatches"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{item.matchName}"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Arsneal vs Chelsea" />
+
+            <TextView
+                android:id="@+id/tv_match_league"
+                style="@style/ListItemSubtitleMatches"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.leagueName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_match_name"
+                tools:text="English Premier League" />
+
+            <TextView
+                android:id="@+id/tv_match_date_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/template_date_time(item.dateEvent,item.timeEvent)}"
+                android:textColor="@color/dark"
+                app:layout_constraintEnd_toEndOf="@id/tv_match_league"
+                app:layout_constraintStart_toStartOf="@id/tv_match_league"
+                app:layout_constraintTop_toBottomOf="@id/tv_match_league"
+                tools:text="23/2/2019  04:56" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_home_badge"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginTop="@dimen/half_margin"
+                app:layout_constraintEnd_toStartOf="@id/tv_home_score"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_match_date_time"
+                app:teamBadge="@{item.homeTeamBadge}"
+                tools:src="@color/dark" />
+
+            <TextView
+                android:id="@+id/tv_home_team"
+                style="@style/ListItemSubtitleMatches"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@{item.homeTeam}"
+                app:layout_constraintEnd_toStartOf="@id/tv_home_score"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_home_badge"
+                tools:text="Arsenal" />
+
+            <TextView
+                android:id="@+id/tv_away_team"
+                style="@style/ListItemSubtitleMatches"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
+                android:gravity="center"
+                android:text="@{item.awayTeam}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_away_score"
+                app:layout_constraintTop_toBottomOf="@id/img_away_badge"
+                tools:text="Chelsea" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_away_badge"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_away_score"
+                app:layout_constraintTop_toTopOf="@id/img_home_badge"
+                app:teamBadge="@{item.awayTeamBadge}"
+                tools:src="@color/orange" />
+
+            <TextView
+                android:id="@+id/separator"
+                style="@style/SeparatorScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/separator"
+                app:layout_constraintBottom_toBottomOf="@id/img_home_badge"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/img_home_badge" />
+
+            <TextView
+                android:id="@+id/tv_home_score"
+                style="@style/SeparatorScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin"
+                android:text="@{item.homeScore}"
+                app:layout_constraintBottom_toBottomOf="@id/img_home_badge"
+                app:layout_constraintEnd_toStartOf="@id/separator"
+                app:layout_constraintTop_toTopOf="@id/img_home_badge"
+                tools:text="19" />
+
+            <TextView
+                android:id="@+id/tv_away_score"
+                style="@style/SeparatorScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:text="@{item.awayScore}"
+                app:layout_constraintBottom_toBottomOf="@id/img_away_badge"
+                app:layout_constraintStart_toEndOf="@id/separator"
+                app:layout_constraintTop_toTopOf="@id/img_away_badge"
+                tools:text="8" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dumb.projects.kadefinalsubmission.viewmodel.AwayMatchViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/all_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/half_padding"
+        tools:context=".fragment.HomeMatchFragment">
+
+        <TextView
+            android:id="@+id/tv_away_team"
+            style="@style/AppTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{viewModel.awayMatch.awayTeam}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Chlesea" />
+
+        <TextView
+            android:id="@+id/text_goals_detail"
+            style="@style/AppTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/half_margin"
+            android:text="@string/goals_detail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_away_team" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/goals_detail_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/half_margin"
+            android:background="@drawable/bottom_container_background"
+            android:paddingBottom="@dimen/half_padding"
+            app:layout_constraintTop_toBottomOf="@id/text_goals_detail">
+
+            <TextView
+                android:id="@+id/tv_goals_detail"
+                style="@style/DetailInfoText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:splitTextHorizontal="@{viewModel.awayMatch.awayGoalDetails}"
+                tools:text="43':Herman Suraji" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/text_red_cards"
+            style="@style/AppTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:text="@string/red_cards"
+            app:layout_constraintEnd_toEndOf="@id/red_cards_wrapper"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/goals_detail_wrapper" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/red_cards_wrapper"
+            android:layout_width="0dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="@dimen/half_margin"
+            android:layout_marginEnd="@dimen/half_margin"
+            android:background="@drawable/bottom_container_background"
+            android:paddingBottom="@dimen/half_padding"
+            app:layout_constraintEnd_toStartOf="@id/guideline_separator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_red_cards">
+
+            <TextView
+                android:id="@+id/tv_red_cards"
+                style="@style/DetailInfoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:splitTextVertical="@{viewModel.awayMatch.awayRedCards}"
+                tools:text="Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet" />
+
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/yellow_red_cards"
+            style="@style/AppTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yellow_cards"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_separator"
+            app:layout_constraintTop_toTopOf="@id/text_red_cards" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/yellow_cards_wrapper"
+            android:layout_width="0dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="@dimen/half_margin"
+            android:background="@drawable/bottom_container_background"
+            android:paddingBottom="@dimen/half_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_separator"
+            app:layout_constraintTop_toTopOf="@id/red_cards_wrapper">
+
+            <TextView
+                android:id="@+id/tv_yellow_cards"
+                style="@style/DetailInfoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:splitTextVertical="@{viewModel.awayMatch.awayYellowCards}"
+                tools:text="Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet" />
+
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/text_substitutes"
+            style="@style/AppTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/half_margin"
+            android:text="@string/substitutes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/red_cards_wrapper" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/substitutes_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/half_margin"
+            android:background="@drawable/bottom_container_background"
+            android:paddingBottom="@dimen/half_padding"
+            app:layout_constraintTop_toBottomOf="@id/text_substitutes">
+
+            <TextView
+                android:id="@+id/tv_substitutes"
+                style="@style/DetailInfoText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:splitTextHorizontal="@{viewModel.awayMatch.awaySubstitutes}"
+                tools:text="Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_separator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_begin="198dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

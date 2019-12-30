@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.arlib.floatingsearchview.FloatingSearchView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/floating_search_view"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@drawable/toolbar_background"
+    app:floatingSearch_hintTextColor="@color/dark"
+    app:floatingSearch_leftActionColor="@color/dark"
+    app:floatingSearch_leftActionMode="showHome"/>

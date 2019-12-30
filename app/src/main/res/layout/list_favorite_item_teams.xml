@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.dumb.projects.kadefinalsubmission.model.TeamFavorites" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/quarter_margin"
+        android:layout_marginEnd="@dimen/quarter_margin"
+        app:cardCornerRadius="@dimen/corner_radius"
+        app:cardElevation="@dimen/cardview_default_elevation"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/all_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/quarter_padding">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_team_badge"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:teamBadge="@{item.teamBadge}"
+                tools:src="@color/dark" />
+
+            <TextView
+                android:id="@+id/tv_team_name"
+                style="@style/ListItemTitleTeam"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/half_margin"
+                android:gravity="start"
+                android:text="@{item.teamName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_team_badge"
+                app:layout_constraintTop_toTopOf="@id/img_team_badge"
+                tools:text="Man United" />
+
+            <TextView
+                android:id="@+id/tv_team_stadium"
+                style="@style/ListItemSubtitleTeam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
+                android:text="@{item.teamStadium}"
+                app:layout_constraintStart_toStartOf="@id/tv_team_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_team_name"
+                tools:text="Old Trafforld" />
+
+            <TextView
+                android:id="@+id/tv_team_location"
+                style="@style/ListItemThirdSubtitleTeam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.teamLocation}"
+                app:layout_constraintStart_toStartOf="@id/tv_team_stadium"
+                app:layout_constraintTop_toBottomOf="@id/tv_team_stadium"
+                tools:text="Manchaster" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dumb.projects.kadefinalsubmission.viewmodel.ClassementViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/half_padding"
+        tools:context=".fragment.ClassementFragment">
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/spinner_league"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/classement_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/half_margin"
+            android:background="@drawable/bottom_container_background"
+            android:paddingBottom="@dimen/half_padding"
+            app:layout_constraintTop_toBottomOf="@id/spinner_league">
+
+            <TextView
+                android:id="@+id/text_classement_team"
+                style="@style/DetailInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/teams"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_separator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="192dp" />
+
+            <TextView
+                android:id="@+id/text_classement_match"
+                style="@style/DetailInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_classement_match"
+                app:layout_constraintBottom_toBottomOf="@id/text_classement_team"
+                app:layout_constraintEnd_toStartOf="@id/text_classement_win"
+                app:layout_constraintStart_toEndOf="@id/guideline_separator"
+                app:layout_constraintTop_toTopOf="@id/text_classement_team" />
+
+            <TextView
+                android:id="@+id/text_classement_win"
+                style="@style/DetailInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_classement_win"
+                app:layout_constraintBottom_toBottomOf="@id/text_classement_match"
+                app:layout_constraintEnd_toStartOf="@id/text_classement_draw"
+                app:layout_constraintStart_toEndOf="@id/text_classement_match"
+                app:layout_constraintTop_toTopOf="@id/text_classement_match" />
+
+            <TextView
+                android:id="@+id/text_classement_draw"
+                style="@style/DetailInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_classement_draw"
+                app:layout_constraintBottom_toBottomOf="@id/text_classement_win"
+                app:layout_constraintEnd_toStartOf="@id/text_classement_loss"
+                app:layout_constraintStart_toEndOf="@id/text_classement_win"
+                app:layout_constraintTop_toTopOf="@id/text_classement_win" />
+
+            <TextView
+                android:id="@+id/text_classement_loss"
+                style="@style/DetailInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_classement_loss"
+                app:layout_constraintBottom_toBottomOf="@id/text_classement_draw"
+                app:layout_constraintEnd_toStartOf="@id/text_classement_goals_for"
+                app:layout_constraintStart_toEndOf="@id/text_classement_draw"
+                app:layout_constraintTop_toTopOf="@id/text_classement_draw" />
+
+            <TextView
+                android:id="@+id/text_classement_goals_for"
+                style="@style/DetailInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_classement_goals_for"
+                app:layout_constraintBottom_toBottomOf="@id/text_classement_loss"
+                app:layout_constraintEnd_toStartOf="@id/text_classement_goals_against"
+                app:layout_constraintStart_toEndOf="@id/text_classement_loss"
+                app:layout_constraintTop_toTopOf="@id/text_classement_loss" />
+
+            <TextView
+                android:id="@+id/text_classement_goals_against"
+                style="@style/DetailInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_classement_goals_against"
+                app:layout_constraintBottom_toBottomOf="@id/text_classement_goals_for"
+                app:layout_constraintEnd_toStartOf="@id/text_classement_total"
+                app:layout_constraintStart_toEndOf="@id/text_classement_goals_for"
+                app:layout_constraintTop_toTopOf="@id/text_classement_goals_for" />
+
+            <TextView
+                android:id="@+id/text_classement_total"
+                style="@style/DetailInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_classement_total"
+                app:layout_constraintBottom_toBottomOf="@id/text_classement_goals_against"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/text_classement_goals_against"
+                app:layout_constraintTop_toTopOf="@id/text_classement_goals_against" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/half_margin"
+            app:classementItems="@{viewModel.classement}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/classement_wrapper"
+            tools:listitem="@layout/list_item_classement" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/progress_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.status}"
+            app:indicatorColor="@color/orange"
+            app:indicatorName="BallPulseIndicator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

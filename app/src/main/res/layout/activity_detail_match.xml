@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dumb.projects.kadefinalsubmission.viewmodel.DetailMatchViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/detail_match_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DetailMatchActivity">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/all_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <include layout="@layout/detail_toolbar" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/img_match_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="228dp"
+                    android:scaleType="centerCrop"
+                    app:detailBanner="@{viewModel.match.matchBanner}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius_bottom_left="@dimen/corner_radius"
+                    app:riv_corner_radius_bottom_right="@dimen/corner_radius"
+                    tools:src="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_match_name"
+                    style="@style/DetailTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/half_margin"
+                    android:layout_marginEnd="@dimen/half_margin"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:text="@{viewModel.match.matchName}"
+                    app:layout_constraintTop_toBottomOf="@id/detail_toolbar"
+                    tools:text="Arsenal vs Chelsea" />
+
+                <TextView
+                    android:id="@+id/tv_match_league"
+                    style="@style/DetailSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.match.leagueName}"
+                    app:layout_constraintEnd_toEndOf="@id/tv_match_name"
+                    app:layout_constraintStart_toStartOf="@id/tv_match_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_match_name"
+                    tools:text="English Premiere League" />
+
+                <TextView
+                    android:id="@+id/tv_match_date_time"
+                    style="@style/DetailThirdSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/template_date_time(viewModel.match.dateEvent,viewModel.match.timeEvent)}"
+                    app:layout_constraintEnd_toEndOf="@id/tv_match_league"
+                    app:layout_constraintStart_toStartOf="@id/tv_match_league"
+                    app:layout_constraintTop_toBottomOf="@id/tv_match_league"
+                    tools:text="29-10-2019  12:34:00" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_home_badge"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_match_banner"
+                    app:layout_constraintEnd_toStartOf="@id/tv_home_score"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_match_date_time"
+                    app:teamBadge="@{viewModel.match.homeTeamBadge}"
+                    tools:src="@color/dark" />
+
+                <TextView
+                    android:id="@+id/tv_home_score"
+                    style="@style/DetailInfoMatch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:text="@{viewModel.match.homeScore}"
+                    app:layout_constraintBottom_toBottomOf="@id/img_home_badge"
+                    app:layout_constraintEnd_toStartOf="@id/separator"
+                    app:layout_constraintTop_toTopOf="@id/img_home_badge"
+                    tools:text="4" />
+
+                <TextView
+                    android:id="@+id/separator"
+                    style="@style/DetailInfoMatch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/separator"
+                    app:layout_constraintBottom_toBottomOf="@id/img_home_badge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/img_home_badge" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_away_badge"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_home_badge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_away_score"
+                    app:layout_constraintTop_toTopOf="@id/img_home_badge"
+                    app:teamBadge="@{viewModel.match.awayTeamBadge}"
+                    tools:src="@color/orange" />
+
+                <TextView
+                    android:id="@+id/tv_away_score"
+                    style="@style/DetailInfoMatch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:text="@{viewModel.match.awayScore}"
+                    app:layout_constraintBottom_toBottomOf="@id/img_away_badge"
+                    app:layout_constraintStart_toEndOf="@id/separator"
+                    app:layout_constraintTop_toTopOf="@id/img_away_badge"
+                    tools:text="2" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    style="@style/CustomTabLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/half_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_match_banner" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="0dp"
+                    android:layout_height="500dp"
+                    android:layout_marginTop="@dimen/half_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/progress_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.status}"
+                    app:indicatorColor="@color/orange"
+                    app:indicatorName="BallPulseIndicator"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

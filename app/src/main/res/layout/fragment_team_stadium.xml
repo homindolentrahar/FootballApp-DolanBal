@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dumb.projects.kadefinalsubmission.viewmodel.TeamStadiumViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/half_padding"
+            tools:context=".fragment.TeamStadiumFragment">
+
+            <TextView
+                android:id="@+id/tv_team_stadium"
+                style="@style/AppTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewModel.team.teamStadium}"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Banford Stadium" />
+
+            <TextView
+                android:id="@+id/tv_team_location"
+                style="@style/ListItemSubtitleMatches"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.team.stadiumLocation}"
+                app:layout_constraintEnd_toEndOf="@id/tv_team_stadium"
+                app:layout_constraintStart_toStartOf="@id/tv_team_stadium"
+                app:layout_constraintTop_toBottomOf="@id/tv_team_stadium"
+                tools:text="Hanford,Hogwarts" />
+
+            <TextView
+                android:id="@+id/tv_stadium_capacity"
+                style="@style/ListItemSubtitleMatches"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/template_stadium_capacity(viewModel.team.stadiumCapacity)}"
+                app:layout_constraintEnd_toEndOf="@id/tv_team_location"
+                app:layout_constraintStart_toStartOf="@id/tv_team_location"
+                app:layout_constraintTop_toBottomOf="@id/tv_team_location"
+                tools:text="34.222 seats" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_stadium_thumbnail"
+                android:layout_width="256dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="@dimen/margin"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_stadium_capacity"
+                app:riv_corner_radius="@dimen/corner_radius"
+                app:stadiumThumbnail="@{viewModel.team.stadiumThumbnail}"
+                tools:src="@color/dark" />
+
+            <TextView
+                android:id="@+id/text_stadium_description"
+                style="@style/AppTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_stadium_thumbnail" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/wrap_description"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/half_margin"
+                android:background="@drawable/bottom_container_background"
+                android:paddingBottom="@dimen/half_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_stadium_description">
+
+                <TextView
+                    android:id="@+id/tv_stadium_description"
+                    style="@style/DetailInfoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.team.stadiumDescription}"
+                    tools:text="Lorem Ipsum Dolor Sit Amet" />
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
