@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.arlib.floatingsearchview.FloatingSearchView
+import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion
 import com.dumb.projects.kadefinalsubmission.adapter.MatchAdapter
 import com.dumb.projects.kadefinalsubmission.api.APIRepository
 import com.dumb.projects.kadefinalsubmission.databinding.ActivitySearchMatchBinding
@@ -48,11 +50,19 @@ class SearchMatchActivity : AppCompatActivity() {
         floating_search_view.setSearchFocused(true)
         floating_search_view.setDimBackground(true)
         floating_search_view.setOnHomeActionClickListener { finish() }
-        floating_search_view.setOnQueryChangeListener { oldQuery, newQuery ->
-            if (newQuery != "") {
-                viewModel.searchMatch(newQuery)
+        floating_search_view.setOnSearchListener(object : FloatingSearchView.OnSearchListener {
+            override fun onSearchAction(currentQuery: String?) {
+                if (!currentQuery?.trim().equals("")) {
+                    currentQuery?.let {
+                        viewModel.searchMatch(it.trim())
+                    }
+                }
             }
-        }
+
+            override fun onSuggestionClicked(searchSuggestion: SearchSuggestion?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        })
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
